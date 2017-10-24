@@ -87,28 +87,20 @@ double * forward(double * data){
 	for(k=0;k<layers_count-2;k++)//this loop to all layers.
 		for(j=0;j<layer[k+1].size;j++)
 		{
-printf("k=%d\tj=%d to %d\ti to %d  \n",k,j,layer[k+1].size,layer[k].size);	
-
-printf("weight=%lf\n",layer[0].weight[1][0].weightV);
 
 			sum=0;
-			for(i=0;i<layer[k].size;i++){
-printf("##i=%d\tj=%d\tk=%d\n",i,j,k);			
+			for(i=0;i<layer[k].size;i++)
 				sum+=layer[k].neural[i].a*layer[k].weight[i][j].weightV;//the sum here
-printf("i=%d\n",i);
-			}
-printf("ok2\n");			
+			
 			sum+=layer[k+1].neural[j].bais;//finaly add the bais
-printf("ok3\n");	
-			layer[k+1].neural[j].x=sum;//then assign it to the x input
-printf("ok4\n");	
-			layer[k+1].neural[j].a=sigmoid(layer[k+1].neural[j].x);//at the end assign the value of activation funtion to var a.
-printf("ok5\n");			
+	
+			layer[k+1].neural[j].x=sum;//then assign it to the x input	
+			layer[k+1].neural[j].a=sigmoid(layer[k+1].neural[j].x);//at the end assign the value of activation funtion to var a.			
 		}
-printf("out\n");	
+	
 	for(i=0;i<layer[k].size;i++)
 		output_val[i]=layer[k].neural[i].a;
-printf("ok6\n");
+
 	return output_val;
 
 }

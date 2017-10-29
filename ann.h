@@ -27,9 +27,14 @@ struct layers{
 struct layers * layer=0;
 uint16 layers_count;
 double * output_val=0;
+double learnRate = 0.05;//we can change it later by the main function
 int INIT_NETWORK(int *layer_number,int layer_size);//preparing the neural network
 
 double * forward(double * data);//entring an array of double and the result is the array of the output
+
+double cost_fx(double * target_val);//the cost function
+
+void backProp(double * target);
 
 double sigmoid(double value);
 #endif
